@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspirely: Your Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="index.html" class="font-bold text-xl text-indigo-600">Aspirely</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="profile.html" class="text-indigo-600 hover:text-indigo-600 transition duration-300">Profile</a>
+                <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
+                <a href="resume.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
+                <a href="explore.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
+                <a href="mentor.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
+                <a href="sites.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+            <a href="profile.html" class="block text-indigo-600 hover:text-indigo-600 transition duration-300">Profile</a>
+            <a href="dashboard.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
+            <a href="resume.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
+            <a href="explore.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
+            <a href="mentor.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
+            <a href="sites.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
+        </div>
+    </nav>
+    
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Your Career DNA Profile</h1>
+            <p class="text-lg text-gray-600">Discover your unique strengths, traits, and values to find the perfect career path. Take our quiz to get started!</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-xl p-8 md:p-12 max-w-2xl mx-auto">
+            <div class="text-center mb-8">
+                <img src="https://placehold.co/128x128/e2e8f0/667eea?text=DNA" alt="DNA Icon" class="rounded-full mx-auto mb-4">
+                <h2 class="text-2xl font-bold">Your Personalized Insights</h2>
+                <p class="text-gray-600 mt-2">Complete the quiz to unlock your detailed profile.</p>
+            </div>
+            
+            <div class="bg-gray-100 p-6 rounded-lg text-center">
+                <h3 class="text-xl font-semibold mb-4">Ready to find your Career DNA?</h3>
+                <button onclick="takeQuiz()" class="gradient-bg text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition duration-300">Take the Quiz</button>
+            </div>
+
+            <div class="mt-8 space-y-6">
+                <!-- Placeholder for Profile Results -->
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-bold">Skills & Strengths</h3>
+                    <p class="text-gray-600 mt-2">Based on your input, we'll map your skills and suggest areas for growth.</p>
+                </div>
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="text-lg font-bold">Personality & Traits</h3>
+                    <p class="text-gray-600 mt-2">Understand your personality to see which work environments fit you best.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold">Interests & Values</h3>
+                    <p class="text-gray-600 mt-2">Match your core values and passions with meaningful careers.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2023 Aspirely. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function takeQuiz() {
+            // Placeholder for a future quiz function
+            const resultBox = document.createElement('div');
+            resultBox.className = 'bg-yellow-100 text-yellow-800 p-4 mt-6 rounded-lg';
+            resultBox.textContent = 'This button would start a quiz. The results would be displayed here!';
+            const mainContent = document.querySelector('main');
+            mainContent.appendChild(resultBox);
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspirely: Your Personalized Career Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="index.html" class="font-bold text-xl text-indigo-600">Aspirely</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="profile.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Profile</a>
+                <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
+                <a href="resume.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
+                <a href="explore.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
+                <a href="mentor.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
+                <a href="sites.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+            <a href="profile.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Profile</a>
+            <a href="dashboard.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
+            <a href="resume.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
+            <a href="explore.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
+            <a href="mentor.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
+            <a href="sites.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
+        </div>
+    </nav>
+
+    <!-- Header & Hero Section -->
+    <header class="gradient-bg text-white py-12 md:py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-8 md:mb-0 text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Aspirely</h1>
+                <p class="text-lg md:text-xl mb-6 opacity-90">Your Personalized Career & Education Advisor.</p>
+                <a href="#about" class="bg-white text-[#667eea] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300">Learn More</a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://placehold.co/400x300/a3b1c2/ffffff?text=Career+Path" alt="Visual representation of a career path" class="rounded-lg shadow-2xl">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Proposed Solution</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Aspirely is a one-stop platform for career mapping, life skills, and well-being, all integrated into a single user experience.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Card 1: AI Profiler -->
+                <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
+                    <div class="flex items-center justify-center bg-indigo-100 rounded-full w-16 h-16 mx-auto mb-6">
+                        <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l-2 2a4 4 0 01-6 0l2-2m-2 2a4 4 0 01-6 0l2-2m-2 2l4-4-4-4"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19V6l2 2a4 4 0 006 0l-2-2m2 2a4 4 0 006 0l-2-2m2 2l-4-4 4-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">AI-driven “Career DNA”</h3>
+                    <p class="text-gray-600 text-center">A comprehensive profiler using psychometrics, cognitive traits, and values to understand user potential.</p>
+                </div>
+
+                <!-- Feature Card 2: Resume/CV Analysis -->
+                <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
+                    <div class="flex items-center justify-center bg-purple-100 rounded-full w-16 h-16 mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2-10V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Resume/CV Analysis</h3>
+                    <p class="text-gray-600 text-center">Automatic skill mapping and personalized career suggestions based on uploaded resumes.</p>
+                </div>
+
+                <!-- Feature Card 3: Stream & Career Explorer -->
+                <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
+                    <div class="flex items-center justify-center bg-indigo-100 rounded-full w-16 h-16 mx-auto mb-6">
+                        <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6zm11 4h-4m4 4h-4m4 4h-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Career Explorer</h3>
+                    <p class="text-gray-600 text-center">Custom field exploration for classes 10 & 12, with detailed insights on streams and careers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Approach Section -->
+    <section class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Approach</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">A modern, scalable, and modular design to ensure seamless functionality and future growth.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://placehold.co/500x350/ffffff/333333?text=3-Tier+Design" alt="3-tier design architecture" class="rounded-lg shadow-2xl">
+                </div>
+                <div class="md:w-1/2">
+                    <ul class="space-y-6">
+                        <li class="flex items-start space-x-4">
+                            <span class="bg-green-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold text-sm">✓</span>
+                            <div>
+                                <h4 class="text-xl font-bold">3-Tier Design</h4>
+                                <p class="text-gray-600">UI → Backend/API → AI + Database, ensuring a robust and organized architecture.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <span class="bg-green-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold text-sm">✓</span>
+                            <div>
+                                <h4 class="text-xl font-bold">Modular & Scalable</h4>
+                                <p class="text-gray-600">Built with future AI/API integration in mind, ready for deployment on the cloud (AWS/Azure).</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <span class="bg-green-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold text-sm">✓</span>
+                            <div>
+                                <h4 class="text-xl font-bold">Key Technologies</h4>
+                                <p class="text-gray-600">Leverages Python for the backend, HTML/CSS for the front end, and AI models from Gemini API and Hugging Face.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Impact & Benefits</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Aspirely aims to drive socio-economic benefits by developing adaptable, ethical, and future-ready talent.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Benefit Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-3">Holistic Growth</h3>
+                    <p class="text-gray-600">Empowers users with personalized career guidance, life skills, and mental well-being development.</p>
+                </div>
+                <!-- Benefit Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-3">Reduced Burnout</h3>
+                    <p class="text-gray-600">Offers early, adaptive interventions based on real data to reduce career mismatches and burnout.</p>
+                </div>
+                <!-- Benefit Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-3">Collaborative Community</h3>
+                    <p class="text-gray-600">Builds a supportive community that enhances peer support and networking opportunities.</p>
+                </div>
+                <!-- Benefit Card 4 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
+                    <h3 class="text-xl font-bold mb-3">Democratized Access</h3>
+                    <p class="text-gray-600">Democratizes access to expert mentorship and mental health resources for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                <p class="text-xl font-bold">Team Lumos</p>
+                <p class="text-sm text-gray-400">Hackathon Submission</p>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2023 Aspirely. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

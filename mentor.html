@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspirely: Mentors & AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <a href="index.html" class="font-bold text-xl text-indigo-600">Aspirely</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="profile.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Profile</a>
+                <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
+                <a href="resume.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
+                <a href="explore.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
+                <a href="mentor.html" class="text-indigo-600 hover:text-indigo-600 transition duration-300">Mentors</a>
+                <a href="sites.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+            <a href="profile.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Profile</a>
+            <a href="dashboard.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
+            <a href="resume.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
+            <a href="explore.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
+            <a href="mentor.html" class="block text-indigo-600 hover:text-indigo-600 transition duration-300">Mentors</a>
+            <a href="sites.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
+        </div>
+    </nav>
+    
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Connect with Mentors & AI</h1>
+            <p class="text-lg text-gray-600">Get instant advice from our AI assistant or connect with a live mentor.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <!-- AI Assistant Card -->
+            <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:shadow-2xl">
+                <h2 class="text-2xl font-bold text-center mb-4">AI Assistant</h2>
+                <div class="bg-gray-100 h-64 rounded-lg p-4 overflow-y-auto mb-4">
+                    <!-- AI Chat messages would go here -->
+                    <p class="text-gray-600 text-sm">AI: Hi, how can I help you today?</p>
+                </div>
+                <div class="flex">
+                    <input type="text" placeholder="Ask a question..." class="flex-1 rounded-full px-4 py-2 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 text-white rounded-full p-2 ml-2 hover:bg-indigo-700 transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Mentors Card -->
+            <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:shadow-2xl">
+                <h2 class="text-2xl font-bold text-center mb-4">Live Mentors</h2>
+                <div class="space-y-4">
+                    <!-- Mentor Card 1 -->
+                    <div class="flex items-center space-x-4 p-4 bg-gray-100 rounded-lg">
+                        <img src="https://placehold.co/64x64/a3b1c2/ffffff?text=M1" alt="Mentor 1" class="rounded-full">
+                        <div>
+                            <p class="font-semibold">Jane Doe</p>
+                            <p class="text-sm text-gray-600">Career Counselor</p>
+                        </div>
+                        <button class="ml-auto bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300">Connect</button>
+                    </div>
+                    <!-- Mentor Card 2 -->
+                    <div class="flex items-center space-x-4 p-4 bg-gray-100 rounded-lg">
+                        <img src="https://placehold.co/64x64/a3b1c2/ffffff?text=M2" alt="Mentor 2" class="rounded-full">
+                        <div>
+                            <p class="font-semibold">John Smith</p>
+                            <p class="text-sm text-gray-600">Software Engineer</p>
+                        </div>
+                        <button class="ml-auto bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300">Connect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2023 Aspirely. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
