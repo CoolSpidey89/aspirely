@@ -1,113 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aspirely: Your Profile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7fafc;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aspirely: Your Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* Background floating shapes */
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: floatMove 15s linear infinite;
+      z-index: 0;
+    }
+    @keyframes floatMove {
+      0% { transform: translateY(0) translateX(0) rotate(0deg);}
+      50% { transform: translateY(-50px) translateX(50px) rotate(180deg);}
+      100% { transform: translateY(0) translateX(0) rotate(360deg);}
+    }
+
+    @keyframes gradientMove {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-    </style>
+    /* Hover box gradient */
+    .box { position: relative; z-index: 1; }
+    .box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, #ee6060, #773af1);
+      background-size: 600% 600%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+      border-radius: 0.75rem;
+    }
+    .box:hover::before {
+      opacity: 1;
+      animation: gradientMove 5s ease infinite;
+    }
+
+    /* Card hover effects */
+    .feature-card {
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    /* Reveal content on hover */
+    .feature-card p {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .feature-card:hover p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    /* Section waves */
+    .section-divider svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+
+    /* Navbar hover underline */
+    a.nav-underline { position: relative; }
+    a.nav-underline::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg,#ed64a6,#667eea);
+      transition: width 0.3s ease, left 0.3s ease;
+      transform: translateX(-50%);
+    }
+    a.nav-underline:hover::after { width: 70%; }
+
+  </style>
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 relative">
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg p-4">
-        <div class="container mx-auto flex items-center justify-between">
-            <a href="index.html" class="font-bold text-xl text-indigo-600">Aspirely</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="profile.html" class="text-indigo-600 hover:text-indigo-600 transition duration-300">Profile</a>
-                <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
-                <a href="resume.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
-                <a href="explore.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
-                <a href="mentor.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
-                <a href="sites.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
+  <!-- Floating Shapes -->
+  <div class="floating-shape w-48 h-48 bg-pink-500" style="top:10%; left:5%; animation-duration:20s;"></div>
+  <div class="floating-shape w-64 h-64 bg-indigo-500" style="top:50%; left:80%; animation-duration:25s;"></div>
+  <div class="floating-shape w-32 h-32 bg-purple-400" style="top:75%; left:30%; animation-duration:18s;"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="bg-white dark:bg-gray-800 shadow-lg p-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <a href="home.html" class="font-bold text-3xl text-indigo-600 dark:text-indigo-400 transition-transform duration-300 transform hover:scale-110">Aspirely</a>
+        <div class="hidden md:flex space-x-6">
+            <a href="profile.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Profile</a>
+            <a href="dashboard.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Dashboard</a>
+            <a href="resume.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Resume</a>
+            <a href="explore.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Explore</a>
+            <a href="mentor.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Mentors</a>
+            <a href="resources.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Resources</a>
+            <button id="theme-toggle" class="ml-4 text-gray-600 dark:text-gray-300 focus:outline-none">🌙</button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-            <a href="profile.html" class="block text-indigo-600 hover:text-indigo-600 transition duration-300">Profile</a>
-            <a href="dashboard.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
-            <a href="resume.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
-            <a href="explore.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
-            <a href="mentor.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
-            <a href="sites.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center space-x-2">
+            <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+            <button id="theme-toggle-mobile" class="text-gray-600 dark:text-gray-300 focus:outline-none">🌙</button>
         </div>
-    </nav>
-    
-    <main class="container mx-auto px-6 py-16 md:py-24">
-        <div class="max-w-4xl mx-auto text-center mb-12">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4">Your Career DNA Profile</h1>
-            <p class="text-lg text-gray-600">Discover your unique strengths, traits, and values to find the perfect career path. Take our quiz to get started!</p>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+        <a href="profile.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 nav-underline1"><span>Profile</span></a>
+        <a href="dashboard.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 nav-underline1"><span>Dashboard</span></a>
+        <a href="resume.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 hover:-translate-y-1 nav-underline1"><span>Resume</span></a>
+        <a href="explore.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 nav-underline1"><span>Explore</span></a>
+        <a href="mentor.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 hover:-translate-y-1 nav-underline1"><span>Mentors</span></a>
+        <a href="resources.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 hover:-translate-y-1 nav-underline1"><span>Resources</span></a>
+    </div>
+</nav>
+
+  
+  <!-- Hero Section -->
+  <main class="container mx-auto px-6 py-24 relative z-10">
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text  bg-gradient-to-r from-indigo-500 via-pink-500 to-purple-500">Your Career DNA Profile</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300">Discover your unique strengths, traits, and values to find the perfect career path. Take our quiz to get started!</p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-8 md:p-12 max-w-3xl mx-auto relative z-10">
+      <div class="text-center mb-8 relative">
+        <img src="dna2.png" alt="DNA Icon" id="dnaIcon" class="rounded-full mx-auto mb-4 border border-gray-200 dark:border-gray-600 shadow-lg" style="max-height: 200px;">
+
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Your Personalized Insights</h2>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Complete the quiz to unlock your detailed profile.</p>
+      </div>
+
+      <!-- Quiz CTA -->
+      <div class="group box bg-indigo-500 dark:bg-indigo-800 p-6 rounded-lg text-center">
+        <h3 class="text-xl font-semibold mb-4 text-white dark:text-white">Ready to find your Career DNA?</h3>
+        <button onclick="takeQuiz()" 
+          class="font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 
+                    bg-gray-100 text-indigo-500 hover:bg-gray-800 hover:text-white
+                    dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-white dark:hover:text-indigo-500">
+          Take the Quiz
+        </button>
+      </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="feature-card bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 relative overflow-hidden">
+        <h3 class="text-xl font-bold text-center mb-2">Skills & Strengths</h3>
+        <p class="text-gray-600 dark:text-gray-200 text-center mt-4 opacity-0">Based on your input, we'll map your skills and suggest areas for growth.</p>
+      </div>
+      <div class="feature-card bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 relative overflow-hidden">
+        <h3 class="text-xl font-bold text-center mb-2">Personality & Traits</h3>
+        <p class="text-gray-600 dark:text-gray-200 text-center mt-4 opacity-0">Understand your personality to see which work environments fit you best.</p>
+      </div>
+      <div class="feature-card bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 relative overflow-hidden">
+        <h3 class="text-xl font-bold text-center mb-2">Interests & Values</h3>
+        <p class="text-gray-600 dark:text-gray-200 text-center mt-4 opacity-0">Match your core values and passions with meaningful careers.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 dark:bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6 text-center">
+        <div class="mb-4">
+            <p class="text-xl font-bold">Team Lumos</p>
+            <p class="text-sm text-gray-400">Hackathon Submission</p>
         </div>
+        <p class="text-gray-500 text-sm">&copy; 2025 Aspirely. All Rights Reserved.</p>
+    </div>
+</footer>
 
-        <div class="bg-white rounded-xl shadow-xl p-8 md:p-12 max-w-2xl mx-auto">
-            <div class="text-center mb-8">
-                <img src="https://placehold.co/128x128/e2e8f0/667eea?text=DNA" alt="DNA Icon" class="rounded-full mx-auto mb-4">
-                <h2 class="text-2xl font-bold">Your Personalized Insights</h2>
-                <p class="text-gray-600 mt-2">Complete the quiz to unlock your detailed profile.</p>
-            </div>
-            
-            <div class="bg-gray-100 p-6 rounded-lg text-center">
-                <h3 class="text-xl font-semibold mb-4">Ready to find your Career DNA?</h3>
-                <button onclick="takeQuiz()" class="gradient-bg text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition duration-300">Take the Quiz</button>
-            </div>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-            <div class="mt-8 space-y-6">
-                <!-- Placeholder for Profile Results -->
-                <div class="border-b border-gray-200 pb-4">
-                    <h3 class="text-lg font-bold">Skills & Strengths</h3>
-                    <p class="text-gray-600 mt-2">Based on your input, we'll map your skills and suggest areas for growth.</p>
-                </div>
-                <div class="border-b border-gray-200 pb-4">
-                    <h3 class="text-lg font-bold">Personality & Traits</h3>
-                    <p class="text-gray-600 mt-2">Understand your personality to see which work environments fit you best.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold">Interests & Values</h3>
-                    <p class="text-gray-600 mt-2">Match your core values and passions with meaningful careers.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-500 text-sm">&copy; 2023 Aspirely. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        function takeQuiz() {
-            // Placeholder for a future quiz function
-            const resultBox = document.createElement('div');
-            resultBox.className = 'bg-yellow-100 text-yellow-800 p-4 mt-6 rounded-lg';
-            resultBox.textContent = 'This button would start a quiz. The results would be displayed here!';
-            const mainContent = document.querySelector('main');
-            mainContent.appendChild(resultBox);
+    mobileMenuButton.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('hidden') || mobileMenu.style.maxHeight === '0px') {
+            // Open menu smoothly
+            mobileMenu.classList.remove('hidden', 'opacity-0');
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+            mobileMenu.style.opacity = 1;
+        } else {
+            // Close menu smoothly
+            mobileMenu.style.maxHeight = "0px";
+            mobileMenu.style.opacity = 0;
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300); // match CSS transition duration
         }
-    </script>
+    });
+
+
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const iconDesktop = document.getElementById('theme-icon-desktop');
+
+    function setTheme(isDark){
+      if(isDark){
+        document.documentElement.classList.add('dark');
+        iconDesktop.textContent = '☀️';
+        localStorage.setItem('theme','dark');
+      }else{
+        document.documentElement.classList.remove('dark');
+        iconDesktop.textContent = '🌙';
+        localStorage.setItem('theme','light');
+      }
+    }
+
+    function toggleTheme(){
+      setTheme(!document.documentElement.classList.contains('dark'));
+    }
+
+    themeToggle.addEventListener('click', toggleTheme);
+    const storedTheme = localStorage.getItem('theme');
+    setTheme(storedTheme==='dark');
+
+    // Feature card intersection animation
+    const cards = document.querySelectorAll('.feature-card');
+    const thresholds = Array.from({length: 21}, (_, i) => i * 0.05);
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.style.transform='scale(1)';
+          entry.target.style.opacity='1';
+        }else{
+          entry.target.style.transform='scale(0.8)';
+          entry.target.style.opacity='0.7';
+        }
+      });
+    }, {threshold: thresholds});
+
+    cards.forEach(card=>{
+      card.style.transition='transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s';
+      card.style.transform='scale(0.8)';
+      card.style.opacity='0.7';
+      observer.observe(card);
+    });
+
+    // Quiz placeholder
+    function takeQuiz(){
+      const resultBox=document.createElement('div');
+      resultBox.className='bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 p-4 mt-6 rounded-lg';
+      resultBox.textContent='This button would start a quiz. The results would be displayed here!';
+      document.querySelector('main').appendChild(resultBox);
+    }
+  </script>
 </body>
 </html>
+
 
