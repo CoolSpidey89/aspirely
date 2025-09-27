@@ -1,195 +1,336 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aspirely: Your Personalized Career Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7fafc;
         }
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(120deg, #ee6060, #773af1);
+            background-size: 600% 600%;
+            animation: gradientMove 20s ease infinite;
+        }
+        @keyframes gradientMove {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .box { position: relative; z-index: 1; }
+        .box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, #ee6060, #773af1);
+            background-size: 600% 600%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+            border-radius: 0.75rem;
+        }
+        .box:hover::before {
+            opacity: 1;
+            animation: gradientMove 5s ease infinite;
+        }
+        a.nav-underline {
+            position: relative;
+        }
+
+        a.nav-underline::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ed64a6,#667eea); /* gradient */
+            transition: width 0.3s ease, left 0.3s ease;
+            transform: translateX(-50%);
+        }
+        a.nav-underline:hover::after {
+            width: 70%;
+            left: 50%;
+        }
+
+        .nav-underline1 span {
+            display: inline-block;
+            position: relative;
+        }
+
+        .nav-underline1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #ed64a6, #667eea);
+            transition: width 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-underline1 span:hover::after {
+            width: 70%;
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg p-4">
-        <div class="container mx-auto flex items-center justify-between">
-            <a href="index.html" class="font-bold text-xl text-indigo-600">Aspirely</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="profile.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Profile</a>
-                <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
-                <a href="resume.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
-                <a href="explore.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
-                <a href="mentor.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
-                <a href="sites.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+<!-- Navigation Bar -->
+<nav class="bg-white dark:bg-gray-800 shadow-lg p-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <a href="home.html" class="font-bold text-3xl text-indigo-600 dark:text-indigo-400 transition-transform duration-300 transform hover:scale-110">Aspirely</a>
+        <div class="hidden md:flex space-x-6">
+            <a href="profile.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Profile</a>
+            <a href="dashboard.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Dashboard</a>
+            <a href="resume.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Resume</a>
+            <a href="explore.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Explore</a>
+            <a href="mentor.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Mentors</a>
+            <a href="resources.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 hover:scale-110 nav-underline">Resources</a>
+            <button id="theme-toggle" class="ml-4 text-gray-600 dark:text-gray-300 focus:outline-none">🌙</button>
+        </div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center space-x-2">
+            <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+            <button id="theme-toggle-mobile" class="text-gray-600 dark:text-gray-300 focus:outline-none">🌙</button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+        <a href="profile.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 nav-underline1"><span>Profile</span></a>
+        <a href="dashboard.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 nav-underline1"><span>Dashboard</span></a>
+        <a href="resume.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 hover:-translate-y-1 nav-underline1"><span>Resume</span></a>
+        <a href="explore.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 transform hover:-translate-y-1 nav-underline1"><span>Explore</span></a>
+        <a href="mentor.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 hover:-translate-y-1 nav-underline1"><span>Mentors</span></a>
+        <a href="resources.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300 hover:-translate-y-1 nav-underline1"><span>Resources</span></a>
+    </div>
+</nav>
+
+<!-- Header & Hero Section -->
+<header class="gradient-bg text-white py-12 md:py-20">
+    <div class="container mx-auto px-2 sm:px-2 md:px-2 flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 mb-8 md:mb-0 text-center md:text-left md:pr-12">
+            <h1 class="text-6xl md:text-7xl font-extrabold leading-tight mb-10 text-center" style="font-family: 'Pacifico', cursive;" >Aspirely</h1>
+            <p class="text-lg md:text-xl mb-10 opacity-90 text-center max-w-3xl">Your Personalized Career & Education Advisor, Providing Expert Guidance to Explore Opportunities, Build Skills, and Shape Your Future</p>
+            <div class="flex justify-center w-full">
+                <a href="#about" class="mt-10 text-3xl bg-white text-[#667eea] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-800 hover:text-gray-100 transition duration-300">Learn More</a>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-            <a href="profile.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Profile</a>
-            <a href="dashboard.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
-            <a href="resume.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
-            <a href="explore.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
-            <a href="mentor.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
-            <a href="sites.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resources</a>
+        <div class="relative w-full md:w-1/2 overflow-hidden rounded-lg shadow-2xl group">
+            <div id="carousel" class="flex transition-transform duration-700">
+                <img src="home4.png" alt="Home 4" class="w-full flex-shrink-0">
+                <img src="home1.png" alt="Home 1" class="w-full flex-shrink-0">
+                <img src="home2.png" alt="Home 2" class="w-full flex-shrink-0">
+                <img src="home3.png" alt="Home 3" class="w-full flex-shrink-0">
+                <img src="home4.png" alt="Home 4" class="w-full flex-shrink-0">
+                <img src="home1.png" alt="Home 1" class="w-full flex-shrink-0">
+            </div>
+
+            <button id="prevBtn" class="absolute top-1/2 left-2 -translate-y-1/2 bg-black bg-opacity-30 text-white px-3 py-2 rounded-full opacity-0 group-hover:opacity-100 transition">‹</button>
+            <button id="nextBtn" class="absolute top-1/2 right-2 -translate-y-1/2 bg-black bg-opacity-30 text-white px-3 py-2 rounded-full opacity-0 group-hover:opacity-100 transition">›</button>
         </div>
-    </nav>
+    </div>
+</header>
 
-    <!-- Header & Hero Section -->
-    <header class="gradient-bg text-white py-12 md:py-20">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 mb-8 md:mb-0 text-center md:text-left">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Aspirely</h1>
-                <p class="text-lg md:text-xl mb-6 opacity-90">Your Personalized Career & Education Advisor.</p>
-                <a href="#about" class="bg-white text-[#667eea] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300">Learn More</a>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <img src="https://placehold.co/400x300/a3b1c2/ffffff?text=Career+Path" alt="Visual representation of a career path" class="rounded-lg shadow-2xl">
-            </div>
+<!-- About Section -->
+<section id="about" class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4"><span class="font-bold text-3xl md:text-4xl text-indigo-600 transition-transform duration-300 transform hover:scale-110">Our</span> Proposed Solution</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Aspirely is a one-stop platform for career mapping, life skills, and well-being, all integrated into a single user experience.</p>
         </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 md:py-24">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Proposed Solution</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Aspirely is a one-stop platform for career mapping, life skills, and well-being, all integrated into a single user experience.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature Card 1: AI Profiler -->
-                <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
-                    <div class="flex items-center justify-center bg-indigo-100 rounded-full w-16 h-16 mx-auto mb-6">
-                        <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l-2 2a4 4 0 01-6 0l2-2m-2 2a4 4 0 01-6 0l2-2m-2 2l4-4-4-4"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19V6l2 2a4 4 0 006 0l-2-2m2 2a4 4 0 006 0l-2-2m2 2l-4-4 4-4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-3">AI-driven “Career DNA”</h3>
-                    <p class="text-gray-600 text-center">A comprehensive profiler using psychometrics, cognitive traits, and values to understand user potential.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature Cards -->
+            <div class="feature-card relative bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 transform scale-90 transition-transform duration-500 hover:scale-110" data-shrink="80">
+            <div class="absolute inset-0 rounded-xl" style="background: url('dna.png') no-repeat center; background-size: cover; filter: brightness(0.6); z-index: 0;"></div>
+            <div class="relative z-10">
+                <div class="flex items-center justify-center bg-indigo-100 dark:bg-indigo-900 rounded-full w-16 h-16 mx-auto mb-6">
+                    <svg class="w-8 h-8 text-indigo-500 dark:text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l-2 2a4 4 0 01-6 0l2-2m-2 2a4 4 0 01-6 0l2-2m-2 2l4-4-4-4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19V6l2 2a4 4 0 006 0l-2-2m2 2a4 4 0 006 0l-2-2m2 2l-4-4 4-4"></path>
+                    </svg>
                 </div>
-
-                <!-- Feature Card 2: Resume/CV Analysis -->
-                <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
-                    <div class="flex items-center justify-center bg-purple-100 rounded-full w-16 h-16 mx-auto mb-6">
-                        <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2-10V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-3">Resume/CV Analysis</h3>
-                    <p class="text-gray-600 text-center">Automatic skill mapping and personalized career suggestions based on uploaded resumes.</p>
-                </div>
-
-                <!-- Feature Card 3: Stream & Career Explorer -->
-                <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:scale-105">
-                    <div class="flex items-center justify-center bg-indigo-100 rounded-full w-16 h-16 mx-auto mb-6">
-                        <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6zm11 4h-4m4 4h-4m4 4h-4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-3">Career Explorer</h3>
-                    <p class="text-gray-600 text-center">Custom field exploration for classes 10 & 12, with detailed insights on streams and careers.</p>
-                </div>
+                <h3 class="text-xl text-gray-100 font-bold text-center mb-3 bg-indigo-800 bg-opacity-50 dark:bg-indigo-900 dark:text-gray-100 dark:bg-opacity-[0.5]">AI-driven “Career DNA”</h3>
+                <p class="text-gray-200 dark:text-gray-300 text-center bg-indigo-800 bg-opacity-50 dark:bg-indigo-900 dark:bg-opacity-[0.5]">A comprehensive profiler using psychometrics, cognitive traits, and values to understand user potential.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Technical Approach Section -->
-    <section class="py-16 md:py-24 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Approach</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">A modern, scalable, and modular design to ensure seamless functionality and future growth.</p>
-            </div>
-            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <img src="https://placehold.co/500x350/ffffff/333333?text=3-Tier+Design" alt="3-tier design architecture" class="rounded-lg shadow-2xl">
+        <div class="feature-card relative bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 transform scale-90 transition-transform duration-500 hover:scale-110" data-shrink="80">
+            <div class="absolute inset-0 rounded-xl" style="background: url('resumecv.png') no-repeat center; background-size: cover; filter: brightness(0.6); z-index: 0;"></div>
+            <div class="relative z-10">
+                <div class="flex items-center justify-center bg-purple-100 dark:bg-purple-900 rounded-full w-16 h-16 mx-auto mb-6">
+                    <svg class="w-8 h-8 text-purple-500 dark:text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2-10V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2z"></path>
+                    </svg>
                 </div>
-                <div class="md:w-1/2">
-                    <ul class="space-y-6">
-                        <li class="flex items-start space-x-4">
-                            <span class="bg-green-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold text-sm">✓</span>
-                            <div>
-                                <h4 class="text-xl font-bold">3-Tier Design</h4>
-                                <p class="text-gray-600">UI → Backend/API → AI + Database, ensuring a robust and organized architecture.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-4">
-                            <span class="bg-green-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold text-sm">✓</span>
-                            <div>
-                                <h4 class="text-xl font-bold">Modular & Scalable</h4>
-                                <p class="text-gray-600">Built with future AI/API integration in mind, ready for deployment on the cloud (AWS/Azure).</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-4">
-                            <span class="bg-green-500 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold text-sm">✓</span>
-                            <div>
-                                <h4 class="text-xl font-bold">Key Technologies</h4>
-                                <p class="text-gray-600">Leverages Python for the backend, HTML/CSS for the front end, and AI models from Gemini API and Hugging Face.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <h3 class="text-xl text-gray-100 font-bold text-center mb-3 bg-gray-800 bg-opacity-50 dark:bg-gray-900 dark:text-gray-100 dark:bg-opacity-[0.5]">Resume/CV Analysis</h3>
+                <p class="text-gray-200 dark:text-gray-300 text-center bg-gray-800 bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-[0.5]">Automatic skill mapping and personalized career suggestions based on uploaded resumes.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Impact Section -->
-    <section class="py-16 md:py-24">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Impact & Benefits</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Aspirely aims to drive socio-economic benefits by developing adaptable, ethical, and future-ready talent.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                <!-- Benefit Card 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
-                    <h3 class="text-xl font-bold mb-3">Holistic Growth</h3>
-                    <p class="text-gray-600">Empowers users with personalized career guidance, life skills, and mental well-being development.</p>
+        <div class="feature-card relative bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 transform transition duration-500 scale-90 hover:scale-110" data-shrink="80">
+            <div class="absolute inset-0 rounded-xl" style="background: url('career_exp.png') no-repeat center; background-size: cover; filter: brightness(0.6); z-index: 0;"></div>
+            <div class="relative z-10">
+                <div class="flex items-center justify-center bg-indigo-100 dark:bg-indigo-900 rounded-full w-16 h-16 mx-auto mb-6">
+                    <svg class="w-8 h-8 text-indigo-500 dark:text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6zm11 4h-4m4 4h-4m4 4h-4"></path>
+                    </svg>
                 </div>
-                <!-- Benefit Card 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
-                    <h3 class="text-xl font-bold mb-3">Reduced Burnout</h3>
-                    <p class="text-gray-600">Offers early, adaptive interventions based on real data to reduce career mismatches and burnout.</p>
-                </div>
-                <!-- Benefit Card 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
-                    <h3 class="text-xl font-bold mb-3">Collaborative Community</h3>
-                    <p class="text-gray-600">Builds a supportive community that enhances peer support and networking opportunities.</p>
-                </div>
-                <!-- Benefit Card 4 -->
-                <div class="bg-white rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
-                    <h3 class="text-xl font-bold mb-3">Democratized Access</h3>
-                    <p class="text-gray-600">Democratizes access to expert mentorship and mental health resources for everyone.</p>
-                </div>
+                <h3 class="text-xl text-gray-100 font-bold text-center mb-3 bg-indigo-800 bg-opacity-50 dark:bg-indigo-900 dark:text-gray-100 dark:bg-opacity-[0.5]">Career Explorer</h3>
+                <p class="text-gray-100 dark:text-gray-300 text-center bg-indigo-800 bg-opacity-50 dark:bg-indigo-900 dark:bg-opacity-[0.5]">Custom field exploration for classes 10 & 12, with detailed insights on streams and careers.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-4">
-                <p class="text-xl font-bold">Team Lumos</p>
-                <p class="text-sm text-gray-400">Hackathon Submission</p>
-            </div>
-            <p class="text-gray-500 text-sm">&copy; 2023 Aspirely. All Rights Reserved.</p>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+<!-- Impact Section -->
+<section class="py-16 md:py-24">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">So Why Choose <span class="font-bold text-3xl md:text-4xl text-indigo-600 transition-transform duration-300 transform hover:scale-110">Us</span>?</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Aspirely aims to drive socio-economic benefits by developing adaptable, ethical, and future-ready talent.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <!-- Benefit Cards -->
+            <div class="feature-card group box bg-indigo-500 dark:bg-indigo-700 rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
+                <h3 class="text-xl font-bold mb-3 text-gray-100 dark:text-gray-200">Holistic Growth</h3>
+                <p class="text-gray-200 dark:text-gray-300">Empowers users with personalized career guidance, life skills, and mental well-being development.</p>
+            </div>
+            <div class="feature-card group box bg-indigo-500 dark:bg-indigo-700 rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
+                <h3 class="text-xl font-bold mb-3 text-gray-100 dark:text-gray-200">Reduced Burnout</h3>
+                <p class=" text-gray-200 dark:text-gray-300">Offers early, adaptive interventions based on real data to reduce career mismatches and burnout.</p>
+            </div>
+            <div class="feature-card group box bg-indigo-500 dark:bg-indigo-700 rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
+                <h3 class="text-xl font-bold mb-3 text-gray-100 dark:text-gray-200">Collaborative Community</h3>
+                <p class="text-gray-200 dark:text-gray-300">Builds a supportive community that enhances peer support and networking opportunities.</p>
+            </div>
+            <div class="feature-card group box bg-indigo-500 dark:bg-indigo-700 rounded-xl shadow-lg p-8 transform transition duration-300 hover:shadow-xl">
+                <h3 class="text-xl font-bold mb-3 text-gray-100 dark:text-gray-200">Democratized Access</h3>
+                <p class="text-gray-200 dark:text-gray-300">Democratizes access to expert mentorship and mental health resources for everyone.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+<!-- Footer -->
+<footer class="bg-gray-800 dark:bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6 text-center">
+        <div class="mb-4">
+            <p class="text-xl font-bold">Team Lumos</p>
+            <p class="text-sm text-gray-400">Hackathon Submission</p>
+        </div>
+        <p class="text-gray-500 text-sm">&copy; 2025 Aspirely. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('hidden') || mobileMenu.style.maxHeight === '0px') {
+            // Open menu smoothly
+            mobileMenu.classList.remove('hidden', 'opacity-0');
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+            mobileMenu.style.opacity = 1;
+        } else {
+            // Close menu smoothly
+            mobileMenu.style.maxHeight = "0px";
+            mobileMenu.style.opacity = 0;
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300); // match CSS transition duration
+        }
+    });
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+
+    function toggleTheme() {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        themeToggle.textContent = isDark ? '☀️' : '🌙';
+        themeToggleMobile.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggleMobile.addEventListener('click', toggleTheme);
+
+    // Remember theme
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+        themeToggle.textContent = '☀️';
+        themeToggleMobile.textContent = '☀️';
+    }
+
+    // Intersection Observer and carousel scripts
+    const cards = document.querySelectorAll('.feature-card');
+    cards.forEach(card => {
+        card.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+    });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const shrinkScale = entry.target.dataset.shrink ? entry.target.dataset.shrink / 100 : 0.8;
+            if (entry.intersectionRatio > 0.25) {  
+                entry.target.style.transform = "scale(1)"; 
+            } else {
+                entry.target.style.transform = `scale(${shrinkScale})`; 
+            }
         });
-    </script>
+    }, { threshold: Array.from({length: 101}, (_, i) => i / 100) });
+    cards.forEach(card => observer.observe(card));
+
+    const carousel = document.getElementById("carousel");
+    const slides = carousel.children;
+    const total = slides.length;
+    let index = 1;
+    let isTransitioning = false;
+
+    function updateSlide(instant = false) {
+        carousel.style.transition = instant ? "none" : "transform 0.7s ease-in-out";
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+        if (!instant) isTransitioning = true;
+    }
+
+    updateSlide(true);
+
+    function showSlide(i) {
+        if (isTransitioning) return;
+        index = i;
+        updateSlide();
+        resetAutoScroll();
+    }
+
+    document.getElementById("prevBtn").addEventListener("click", () => showSlide(index - 1));
+    document.getElementById("nextBtn").addEventListener("click", () => showSlide(index + 1));
+
+    carousel.addEventListener("transitionend", () => {
+        isTransitioning = false;
+        if (index === total - 1) index = 1;
+        if (index === 0) index = total - 2;
+        updateSlide(true);
+    });
+
+    let autoScroll = setInterval(() => showSlide(index + 1), 3000);
+    function resetAutoScroll() {
+        clearInterval(autoScroll);
+        autoScroll = setInterval(() => showSlide(index + 1), 3000);
+    }
+</script>
 </body>
 </html>
