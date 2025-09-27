@@ -1,121 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aspirely: Resources</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7fafc;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aspirely — Resources</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  transition: background 0.7s, color 0.7s;
+  background-color: #f3f5f9;
+}
+
+/* Floating Shapes */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+  animation: floatMove linear infinite;
+  z-index: 5;
+}
+@keyframes floatMove {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-50px) rotate(180deg); }
+}
+
+/* Hero Gradient Background */
+.gradient-bg {
+  background: linear-gradient(135deg, #ff8c42, #6a5acd, #ff7eb3, #42d6ff);
+  background-size: 400% 400%;
+  animation: gradientMove 25s ease infinite;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Cards */
+.feature-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.3s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #1f2937;
+}
+.feature-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.feature-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(106,90,205,0.35);
+}
+
+/* Dark Mode Cards */
+.dark .feature-card {
+  background: rgba(31,41,55,0.6);
+  color: #e5e7eb;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Pills */
+.pill {
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: #5b21b6;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.pill:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.25);
+}
+
+/* Dark Mode Pills */
+.dark .pill {
+  background: rgba(255,255,255,0.05);
+  color: #a78bfa;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Navbar underline */
+a.nav-underline { position: relative; font-weight: 500; }
+a.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg,#ff8c42,#6a5acd);
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
+}
+a.nav-underline:hover::after { width: 70%; }
+
+/* Hero Text */
+.hero-title { 
+  opacity: 0; 
+  animation: fadeInUp 1s forwards; 
+  color: #facc15; 
+  font-weight: 800;
+}
+.dark .hero-title { 
+  color: #22d3ee; 
+}
+.hero-sub { opacity: 0; animation: fadeInUp 1.2s forwards; font-weight: 500; color: #f3f5f9; }
+.dark .hero-sub { color: #d1d5db; }
+
+@keyframes fadeInUp {
+  0% { opacity:0; transform:translateY(20px); }
+  100% { opacity:1; transform:translateY(0); }
+}
+
+/* CTA Buttons */
+.cta-btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  background-color: #ffe066;
+  color: #1e3a8a;
+}
+.cta-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 20px 40px rgba(255,224,102,0.4);
+  background-color: #facc15;
+  color: #111827;
+}
+.dark .cta-btn {
+  background-color: #6d28d9;
+  color: #f3f4f6;
+}
+.dark .cta-btn:hover {
+  background-color: #7c3aed;
+  color: #f9fafb;
+}
+</style>
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-700">
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg p-4">
-        <div class="container mx-auto flex items-center justify-between">
-            <a href="index.html" class="font-bold text-xl text-indigo-600">Aspirely</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="profile.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Profile</a>
-                <a href="dashboard.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
-                <a href="resume.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
-                <a href="explore.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
-                <a href="mentor.html" class="text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
-                <a href="sites.html" class="text-indigo-600 hover:text-indigo-600 transition duration-300">Resources</a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-            <a href="profile.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Profile</a>
-            <a href="dashboard.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Dashboard</a>
-            <a href="resume.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Resume</a>
-            <a href="explore.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Explore</a>
-            <a href="mentor.html" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Mentors</a>
-            <a href="sites.html" class="block text-indigo-600 hover:text-indigo-600 transition duration-300">Resources</a>
-        </div>
-    </nav>
-    
-    <main class="container mx-auto px-6 py-16 md:py-24">
-        <div class="max-w-4xl mx-auto text-center mb-12">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4">Community & Resources</h1>
-            <p class="text-lg text-gray-600">Access curated resources and connect with a community for support and networking.</p>
-        </div>
+<!-- Floating Shapes -->
+<div class="floating-shape w-40 h-40 bg-pink-500" style="top:5%; left:10%; animation-duration:28s;"></div>
+<div class="floating-shape w-64 h-64 bg-blue-400" style="top:55%; left:80%; animation-duration:33s;"></div>
+<div class="floating-shape w-32 h-32 bg-purple-500" style="top:75%; left:20%; animation-duration:20s;"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            <!-- Courses/Certification Card -->
-            <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:shadow-2xl">
-                <h2 class="text-2xl font-bold mb-4">Top Courses & Certifications</h2>
-                <ul class="space-y-4">
-                    <li>
-                        <a href="#" class="block p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-300">
-                            <h3 class="text-lg font-semibold">Coursera</h3>
-                            <p class="text-gray-600">Online courses from top universities and companies.</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-300">
-                            <h3 class="text-lg font-semibold">edX</h3>
-                            <p class="text-gray-600">High-quality online courses from the world's best institutions.</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Mental Health Resources Card -->
-            <div class="bg-white rounded-xl shadow-xl p-8 transform transition duration-300 hover:shadow-2xl">
-                <h2 class="text-2xl font-bold mb-4">Mental Health Resources</h2>
-                <ul class="space-y-4">
-                    <li>
-                        <a href="#" class="block p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-300">
-                            <h3 class="text-lg font-semibold">BetterHelp</h3>
-                            <p class="text-gray-600">Professional counseling from licensed therapists.</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="block p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-300">
-                            <h3 class="text-lg font-semibold">Calm</h3>
-                            <p class="text-gray-600">Meditation, sleep stories, and relaxation programs.</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="mt-12 text-center">
-            <div class="bg-indigo-100 p-8 rounded-xl shadow-lg">
-                <h2 class="text-2xl font-bold text-indigo-800 mb-4">Join Our Community</h2>
-                <p class="text-indigo-600 mb-6">Connect with other users who share your interests and goals.</p>
-                <button class="bg-white text-indigo-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300">Join Community</button>
-            </div>
-        </div>
-    </main>
+<!-- Navbar -->
+<nav class="bg-white dark:bg-gray-800 shadow-lg p-4 sticky top-0 z-50 transition-colors duration-500">
+  <div class="container mx-auto flex items-center justify-between">
+    <a href="home.html" class="font-bold text-3xl text-indigo-600 dark:text-indigo-400 hover:scale-110 transition nav-underline">Aspirely</a>
+    <div class="hidden md:flex space-x-6 items-center">
+      <a href="profile.html" class="nav-underline text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Profile</a>
+      <a href="dashboard.html" class="nav-underline text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Dashboard</a>
+      <a href="resume.html" class="nav-underline text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Resume</a>
+      <a href="explore.html" class="nav-underline text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Explore</a>
+      <a href="mentor.html" class="nav-underline text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Mentors</a>
+      <a href="resources.html" class="nav-underline text-indigo-600 dark:text-indigo-400 font-semibold transition">Resources</a>
+      <button id="theme-toggle" class="ml-4 text-gray-600 dark:text-gray-300 focus:outline-none">🌙</button>
+    </div>
+    <div class="md:hidden flex items-center space-x-2">
+      <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none">☰</button>
+      <button id="theme-toggle-mobile" class="text-gray-600 dark:text-gray-300 focus:outline-none">🌙</button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out">
+    <a href="profile.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Profile</a>
+    <a href="dashboard.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Dashboard</a>
+    <a href="resume.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Resume</a>
+    <a href="explore.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Explore</a>
+    <a href="mentor.html" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Mentors</a>
+    <a href="resources.html" class="block text-indigo-600 dark:text-indigo-400 font-semibold">Resources</a>
+  </div>
+</nav>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 mt-12">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-500 text-sm">&copy; 2023 Aspirely. All Rights Reserved.</p>
-        </div>
-    </footer>
+<!-- Hero -->
+<section class="gradient-bg rounded-3xl shadow-2xl p-14 text-center text-white relative overflow-hidden max-w-6xl mx-auto">
+  <h1 class="hero-title text-5xl md:text-6xl font-extrabold mb-4">Connect. Learn. Grow.</h1>
+  <p class="hero-sub text-xl md:text-2xl mb-6">Discover curated resources and join a thriving community for support, networking, and personal growth.</p>
+  <a href="#" class="cta-btn inline-block font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition transform duration-300">Join Community</a>
+</section>
 
-    <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+<!-- Cards Grid -->
+<section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
+  <div class="feature-card">
+    <h2 class="text-2xl font-bold mb-4 text-center text-indigo-700 dark:text-indigo-300">Top Courses & Certifications</h2>
+    <ul class="space-y-4">
+      <li class="pill p-3 rounded-full"><a href="#">Coursera — Top online courses</a></li>
+      <li class="pill p-3 rounded-full"><a href="#">edX — High-quality learning</a></li>
+      <li class="pill p-3 rounded-full"><a href="#">Udemy — Practical skills</a></li>
+    </ul>
+  </div>
+  <div class="feature-card">
+    <h2 class="text-2xl font-bold mb-4 text-center text-indigo-700 dark:text-indigo-300">Mental Health Resources</h2>
+    <ul class="space-y-4">
+      <li class="pill p-3 rounded-full"><a href="#">BetterHelp — Licensed therapy</a></li>
+      <li class="pill p-3 rounded-full"><a href="#">Calm — Meditation & relaxation</a></li>
+      <li class="pill p-3 rounded-full"><a href="#">Headspace — Mindfulness</a></li>
+    </ul>
+  </div>
+</section>
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+<!-- Footer CTA -->
+<section class="mt-12">
+  <div class="relative rounded-2xl overflow-hidden shadow-2xl text-center p-12 bg-purple-700 hover:bg-purple-600 transition-transform transform hover:scale-105 dark:bg-indigo-800 dark:hover:bg-indigo-700 max-w-4xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold mb-3 text-white">Ready to Grow?</h2>
+    <p class="text-white/90 mb-4 text-lg">Join our community and access the best resources.</p>
+    <a href="#" class="cta-btn inline-block font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition transform duration-300">Join Now</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 dark:bg-gray-900 text-white py-12 text-center mt-6">
+  <p class="text-xl font-bold">Team Lumos</p>
+  <p class="text-sm text-gray-400 dark:text-gray-500">Hackathon Submission</p>
+  <p class="text-gray-500 dark:text-gray-400 text-sm mt-2">&copy; 2025 Aspirely. All Rights Reserved.</p>
+</footer>
+
+<script>
+  // Dark/Light Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  function toggleTheme() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+    themeToggleMobile.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  themeToggle.addEventListener('click', toggleTheme);
+  themeToggleMobile.addEventListener('click', toggleTheme);
+  if(localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+    themeToggle.textContent = '☀️';
+    themeToggleMobile.textContent = '☀️';
+  }
+
+  // Mobile menu toggle
+  const mobileButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileButton.addEventListener('click', () => {
+    if(mobileMenu.classList.contains('hidden')){
+      mobileMenu.classList.remove('hidden');
+      setTimeout(()=>{mobileMenu.style.maxHeight='500px'; mobileMenu.style.opacity='1';},10);
+    } else {
+      mobileMenu.style.maxHeight='0';
+      mobileMenu.style.opacity='0';
+      setTimeout(()=> mobileMenu.classList.add('hidden'),300);
+    }
+  });
+
+  // Reveal cards on scroll
+  const cards = document.querySelectorAll('.feature-card');
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight / 1.1;
+    cards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+      if(cardTop < triggerBottom) card.classList.add('show');
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+</script>
 </body>
 </html>
+
