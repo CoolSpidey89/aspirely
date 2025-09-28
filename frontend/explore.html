@@ -74,6 +74,17 @@
         .animate-glow {
             animation: glow 3s ease-in-out infinite;
         }
+
+         #career-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+        #career-grid::-webkit-scrollbar-thumb {
+            background-color: rgba(99, 102, 241, 0.7); /* Indigo */
+            border-radius: 4px;
+        }
+        #career-grid::-webkit-scrollbar-track {
+            background: transparent;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen text-gray-800 dark:text-gray-200 dark:bg-gray-800 duration-300">
@@ -132,37 +143,120 @@
 </div>
 
 <!-- Career Grid -->
-<div id="career-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  <!-- Career Card -->
-  <div class="career-card bg-indigo-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border border-transparent hover:border-indigo-400">
-    <h3 class="text-xl font-bold mb-2 text-indigo-600 dark:text-indigo-400">Software Development</h3>
-    <p class="text-gray-600 dark:text-gray-300">Learn about coding, algorithms, and building applications for the future.</p>
+<div id="career-grid" 
+     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-h-[600px] overflow-y-auto p-4 rounded-xl scrollbar-thin scrollbar-thumb-indigo-400 scrollbar-track-gray-100 dark:scrollbar-thumb-indigo-600 dark:scrollbar-track-gray-800">
+
+  <!-- Career Card 1 -->
+  <div class="career-card bg-indigo-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-indigo-400">
+  <h3 class="text-xl font-bold mb-2 text-indigo-600 dark:text-indigo-400">Software Development</h3>
+  <p class="text-gray-600 dark:text-gray-300">Learn about coding, algorithms, and building applications for the future.</p>
+</div>
+
+<div class="career-card bg-pink-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-pink-400">
+  <h3 class="text-xl font-bold mb-2 text-pink-600 dark:text-pink-400">Data Science</h3>
+  <p class="text-gray-600 dark:text-gray-300">Discover how to analyze data, build machine learning models, and find insights.</p>
+</div>
+
+<div class="career-card bg-purple-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-purple-400">
+  <h3 class="text-xl font-bold mb-2 text-purple-600 dark:text-purple-400">Digital Marketing</h3>
+  <p class="text-gray-600 dark:text-gray-300">Explore the world of online advertising, SEO, and social media strategy.</p>
+</div>
+
+<div class="career-card bg-green-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-green-400">
+  <h3 class="text-xl font-bold mb-2 text-green-600 dark:text-green-400">Product Management</h3>
+  <p class="text-gray-600 dark:text-gray-300">Guide the development of products from concept to launch.</p>
+</div>
+
+<div class="career-card bg-yellow-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-yellow-400">
+  <h3 class="text-xl font-bold mb-2 text-yellow-600 dark:text-yellow-400">Graphic Design</h3>
+  <p class="text-gray-600 dark:text-gray-300">Create visual concepts and communicate ideas using typography and imagery.</p>
+</div>
+
+<div class="career-card bg-red-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-red-400">
+  <h3 class="text-xl font-bold mb-2 text-red-600 dark:text-red-400">Health & Wellness</h3>
+  <p class="text-gray-600 dark:text-gray-300">Discover careers in healthcare, mental health, and personal well-being.</p>
+</div>
+
+  <!-- Extra Career Options -->
+  <div class="career-card bg-blue-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-blue-400">
+    <h3 class="text-xl font-bold mb-2 text-blue-600 dark:text-blue-400">Cybersecurity</h3>
+    <p class="text-gray-600 dark:text-gray-300">Protect systems and data from threats in the digital age.</p>
   </div>
 
-  <div class="career-card bg-pink-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border border-transparent hover:border-pink-400">
-    <h3 class="text-xl font-bold mb-2 text-pink-600 dark:text-pink-400">Data Science</h3>
-    <p class="text-gray-600 dark:text-gray-300">Discover how to analyze data, build machine learning models, and find insights.</p>
+  <div class="career-card bg-teal-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-teal-400">
+    <h3 class="text-xl font-bold mb-2 text-teal-600 dark:text-teal-400">Artificial Intelligence</h3>
+    <p class="text-gray-600 dark:text-gray-300">Build intelligent machines and work on cutting-edge AI projects.</p>
   </div>
 
-  <div class="career-card bg-purple-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border border-transparent hover:border-purple-400">
-    <h3 class="text-xl font-bold mb-2 text-purple-600 dark:text-purple-400">Digital Marketing</h3>
-    <p class="text-gray-600 dark:text-gray-300">Explore the world of online advertising, SEO, and social media strategy.</p>
+  <div class="career-card bg-orange-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-orange-400">
+    <h3 class="text-xl font-bold mb-2 text-orange-600 dark:text-orange-400">Entrepreneurship</h3>
+    <p class="text-gray-600 dark:text-gray-300">Start your own business and bring innovative ideas to life.</p>
   </div>
 
-  <div class="career-card bg-green-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border border-transparent hover:border-green-400">
-    <h3 class="text-xl font-bold mb-2 text-green-600 dark:text-green-400">Product Management</h3>
-    <p class="text-gray-600 dark:text-gray-300">Guide the development of products from concept to launch.</p>
+  <div class="career-card bg-rose-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-rose-400">
+    <h3 class="text-xl font-bold mb-2 text-rose-600 dark:text-rose-400">Psychology</h3>
+    <p class="text-gray-600 dark:text-gray-300">Study human behavior, mental health, and therapy practices.</p>
   </div>
 
-  <div class="career-card bg-yellow-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border border-transparent hover:border-yellow-400">
-    <h3 class="text-xl font-bold mb-2 text-yellow-600 dark:text-yellow-400">Graphic Design</h3>
-    <p class="text-gray-600 dark:text-gray-300">Create visual concepts and communicate ideas using typography and imagery.</p>
+  <div class="career-card bg-lime-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-lime-400">
+    <h3 class="text-xl font-bold mb-2 text-lime-600 dark:text-lime-400">Environmental Science</h3>
+    <p class="text-gray-600 dark:text-gray-300">Protect ecosystems and work on sustainable solutions for the planet.</p>
   </div>
 
-  <div class="career-card bg-red-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border border-transparent hover:border-red-400">
-    <h3 class="text-xl font-bold mb-2 text-red-600 dark:text-red-400">Health & Wellness</h3>
-    <p class="text-gray-600 dark:text-gray-300">Discover careers in healthcare, mental health, and personal well-being.</p>
+  <div class="career-card bg-fuchsia-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-fuchsia-400">
+    <h3 class="text-xl font-bold mb-2 text-fuchsia-600 dark:text-fuchsia-400">Law</h3>
+    <p class="text-gray-600 dark:text-gray-300">Pursue a career in legal systems, advocacy, or corporate law.</p>
   </div>
+
+  <div class="career-card bg-cyan-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-cyan-400">
+  <h3 class="text-xl font-bold mb-2 text-cyan-600 dark:text-cyan-400">Astronomy</h3>
+  <p class="text-gray-600 dark:text-gray-300">Study the universe, stars, and planets to unlock cosmic mysteries.</p>
+</div>
+
+<div class="career-card bg-emerald-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-emerald-400">
+  <h3 class="text-xl font-bold mb-2 text-emerald-600 dark:text-emerald-400">Medicine</h3>
+  <p class="text-gray-600 dark:text-gray-300">Become a doctor or surgeon to save lives and advance healthcare.</p>
+</div>
+
+<div class="career-card bg-indigo-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-indigo-400">
+  <h3 class="text-xl font-bold mb-2 text-indigo-600 dark:text-indigo-400">Engineering</h3>
+  <p class="text-gray-600 dark:text-gray-300">Design, build, and innovate solutions in civil, mechanical, or electrical fields.</p>
+</div>
+
+<div class="career-card bg-rose-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-rose-400">
+  <h3 class="text-xl font-bold mb-2 text-rose-600 dark:text-rose-400">Journalism</h3>
+  <p class="text-gray-600 dark:text-gray-300">Report news, investigate stories, and give a voice to the public.</p>
+</div>
+
+<div class="career-card bg-amber-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-amber-400">
+  <h3 class="text-xl font-bold mb-2 text-amber-600 dark:text-amber-400">Architecture</h3>
+  <p class="text-gray-600 dark:text-gray-300">Design innovative buildings and urban spaces for the future.</p>
+</div>
+
+<div class="career-card bg-lime-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-lime-400">
+  <h3 class="text-xl font-bold mb-2 text-lime-600 dark:text-lime-400">Environmental Science</h3>
+  <p class="text-gray-600 dark:text-gray-300">Work on sustainability, conservation, and protecting ecosystems.</p>
+</div>
+
+<div class="career-card bg-sky-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-sky-400">
+  <h3 class="text-xl font-bold mb-2 text-sky-600 dark:text-sky-400">Aerospace Engineering</h3>
+  <p class="text-gray-600 dark:text-gray-300">Design aircraft and spacecraft to push the boundaries of exploration.</p>
+</div>
+
+<div class="career-card bg-teal-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-teal-400">
+  <h3 class="text-xl font-bold mb-2 text-teal-600 dark:text-teal-400">Finance</h3>
+  <p class="text-gray-600 dark:text-gray-300">Manage money, investments, and strategies to drive business success.</p>
+</div>
+
+<div class="career-card bg-violet-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-violet-400">
+  <h3 class="text-xl font-bold mb-2 text-violet-600 dark:text-violet-400">Philosophy</h3>
+  <p class="text-gray-600 dark:text-gray-300">Explore fundamental questions about existence, ethics, and knowledge.</p>
+</div>
+
+<div class="career-card bg-orange-100 dark:bg-gray-700 rounded-2xl shadow-xl p-6 hover:shadow-2xl hover:-translate-y-2 transform transition duration-500 border hover:border-orange-400">
+  <h3 class="text-xl font-bold mb-2 text-orange-600 dark:text-orange-400">Hospitality Management</h3>
+  <p class="text-gray-600 dark:text-gray-300">Work in hotels, events, and tourism to create unforgettable experiences.</p>
+</div>
 </div>
 </main>
 
@@ -241,4 +335,5 @@
     </script>
 </body>
 </html>
+
 
